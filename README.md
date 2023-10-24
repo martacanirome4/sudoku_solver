@@ -1,59 +1,34 @@
-# Proyecto Sudoku Solver README
+# Solucionador de Sudoku 6x6 en Prolog
 
-Este proyecto implementa un solucionador de Sudoku en Prolog utilizando un enfoque basado en restricciones. El README proporciona una descripción general del proyecto, los pasos involucrados y los resultados de cada paso.
+Este repositorio contiene un programa Prolog que puede resolver Sudokus 6x6. Sudoku es un rompecabezas numérico en el que debes llenar una cuadrícula con números del 1 al 6, asegurándote de que cada fila, cada columna y cada una de las seis subcuadrículas de 2x3 contengan todos los números del 1 al 6.
 
-## Descripción del proyecto
+## Cómo funciona el solucionador
 
-El objetivo de este proyecto es crear un programa Prolog que pueda resolver Sudokus haciendo cumplir las reglas del Sudoku mediante programación lógica de restricciones. Sudoku es un rompecabezas de colocación de números basado en la lógica en el que se debe llenar una cuadrícula de 9x9 con dígitos del 1 al 9, asegurando que ningún dígito se repita en ninguna fila, columna o subcuadrícula de 3x3.
+El programa Prolog de este repositorio emplea un conjunto de reglas y predicados para garantizar que cada fila, columna y subcuadrícula contenga números diferentes. Así es como funciona:
 
-## Pasos y resultados
+- Regla **`diferente/6`**: Esta regla asegura que seis variables A, B, C, D, E y F tengan valores diferentes. Impone la restricción de que cada fila, columna o subcuadrícula debe contener números únicos.
 
-### 1. Representación de cuadrícula
+- **`printsudoku/6` Predicado**: Este predicado se utiliza para imprimir los valores de las seis variables seguidas, separados por espacios.
 
-**Resultado:** Representamos el Sudoku como una cuadrícula de 9x9, en la que cada celda contiene un dígito del 1 al 9 o una celda vacía (representada por una variable).
+- **`resolver/36` Predicado**: El núcleo del algoritmo de resolución de Sudoku. Hace cumplir las reglas del Sudoku asegurándose de que cada fila, columna y subcuadrícula contenga números diferentes. Se necesitan 36 variables que representan los valores en la cuadrícula del Sudoku de 6x6.
 
-**Justificación:** La estructura de cuadrícula es fundamental para modelar el Sudoku. Cada celda debe tener un valor y las celdas vacías se representan como variables que se completarán durante el proceso de resolución.
+- **`sudoku/36` Predicado**: El punto de entrada para resolver el Sudoku 6x6. Puedes llamar a este predicado con tus valores iniciales y resolverá el rompecabezas.
 
-### 2. Propagación de restricciones
-
-**Resultado:** Usamos las capacidades de propagación de restricciones de Prolog para hacer cumplir las reglas del Sudoku, como garantizar que cada dígito aparezca solo una vez en filas, columnas y subcuadrículas.
-
-**Justificación:** La propagación de restricciones es una técnica fundamental para resolver Sudokus. Automáticamente impone restricciones y elimina posibilidades no válidas, lo que hace que el proceso de resolución sea más eficiente.
-
-### 3. Aplicación de reglas
-
-**Resultado:** Aplicamos las reglas del Sudoku, incluida la garantía de que cada fila y columna contenga valores distintos y que cada subcuadrícula de 3x3 contenga dígitos únicos.
-
-**Justificación:** Las reglas del Sudoku son cruciales para resolver el rompecabezas. Estas reglas son el núcleo de la lógica del rompecabezas y deben aplicarse rigurosamente para encontrar una solución válida.
-
-### 4. Estrategia de búsqueda
-
-**Resultado:** Combinamos la propagación de restricciones con una estrategia de búsqueda para completar los valores de las celdas vacías y al mismo tiempo garantizar que se cumplan las restricciones.
-
-**Justificación:** Una combinación de propagación de restricciones y búsqueda es un enfoque eficaz para resolver Sudokus. La propagación de restricciones reduce el espacio de búsqueda y la estrategia de búsqueda explora posibilidades válidas para encontrar una solución.
-
-### 5. Solución única
-
-**Resultado:** El solucionador tiene como objetivo encontrar una única solución válida que cumpla con todas las reglas del Sudoku.
-
-**Justificación:** Un Sudoku válido debe tener una solución única. El objetivo del solucionador es encontrar esta solución única siguiendo las reglas.
+- **`num/1` Facts**: Estos datos definen los números válidos (1 a 6) que se pueden usar en la cuadrícula de Sudoku.
 
 ## Cómo utilizar
 
-1. Clona este repositorio.
-2. Cargue el archivo Prolog que contiene el solucionador de Sudoku en su entorno Prolog.
-3. Defina un Sudoku como una cuadrícula de 9x9 con dígitos y variables. Utilice variables (por ejemplo, `X`) para representar celdas vacías.
-4. Invoca el predicado `solve_sudoku/1` con tu Sudoku para encontrar una solución.
+1. Abra un entorno Prolog como SWI-Prolog.
 
-## Ejemplo de uso
+2. Cree un nuevo archivo Prolog o utilice el editor integrado.
 
-```prolog
-?- solve_sudoku([[5, 3, X, X, 7, X, X, X, X],
-                  [6, X, X, 1, 9, 5, X, X, X],
-                  [X, 9, 8, X, X, X, X, 6, X],
-                  [8, X, X, X, 6, X, X, X, 3],
-                  [4, X, X, 8, X, 3, X, X, 1],
-                  [7, X, X, X, 2, X, X, X, 6],
-                  [X, 6, X, X, X, X, 2, 8, X],
-                  [X, X, X, 4, 1, 9, X, X, 5],
-                  [X, X, X, X, 8, X, X, 7, 9]]).
+3. Copie y pegue el código proporcionado en su archivo Prolog.
+
+4. Reemplace los guiones bajos en el predicado `sudoku` con los valores iniciales de su Sudoku 6x6. Defina valores conocidos y deje las celdas desconocidas como guiones bajos.
+
+5. Guarde el archivo Prolog con una extensión `.pl`, por ejemplo, `sudoku_solver.pl`.
+
+6. En la terminal Prolog, consulte el archivo usando el predicado `consult/1`:
+
+    ```prolog
+    consult('sudoku_solver.pl').
