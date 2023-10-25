@@ -21,7 +21,7 @@ Prolog Sudoku Solver funciona definiendo y aplicando restricciones para el Sudok
 1. Carga el programa Prolog en su entorno Prolog usando el predicado `consult`:
 
     ```prolog
-    ?- consul('sudoku_solver.pl').
+    ?- consult('sudoku_solver.pl').
 
 2. Crea un Sudoku definiendo una cuadrícula de 4x4. Utilice números enteros del 1 al 4 para representar valores conocidos y utilice un guión bajo _ para representar celdas vacías.
 
@@ -34,7 +34,8 @@ Puzzle = [
 
 3. Llama al predicado 'sudoku/1' con tu rompecabezas para encontrar la solución:
 
-?- sudoku(Puzzle).
+   ```prolog
+   ?- sudoku(Puzzle).
 
 4. El solucionador enviará el Sudoku resuelto a la consola.
 
