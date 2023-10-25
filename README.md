@@ -1,34 +1,65 @@
-# Solucionador de Sudoku 6x6 en Prolog
+# Solucionador de Sudoku con Prolog
 
-Este repositorio contiene un programa Prolog que puede resolver Sudokus 6x6. Sudoku es un rompecabezas numérico en el que debes llenar una cuadrícula con números del 1 al 6, asegurándote de que cada fila, cada columna y cada una de las seis subcuadrículas de 2x3 contengan todos los números del 1 al 6.
+## Descripción general
 
-## Cómo funciona el solucionador
+Este programa 'Sudoku Solver' es un programa simple que te permite resolver un puzzle Sudoku de dimensiones 4x4 utilizando Prolog. Sudoku es un popular juego de rompecabezas numérico donde el objetivo es llenar una cuadrícula de 4x4 con números del 1 al 4 de tal manera que cada fila, cada columna y cada subcuadrícula de 2x2 contenga todos los números del 1 al 4 sin repetición.
 
-El programa Prolog de este repositorio emplea un conjunto de reglas y predicados para garantizar que cada fila, columna y subcuadrícula contenga números diferentes. Así es como funciona:
+El solucionador utiliza un enfoque lógico para determinar la solución válida para un Sudoku determinado.
 
-- Regla **`diferente/6`**: Esta regla asegura que seis variables A, B, C, D, E y F tengan valores diferentes. Impone la restricción de que cada fila, columna o subcuadrícula debe contener números únicos.
+## Cómo funciona
 
-- **`printsudoku/6` Predicado**: Este predicado se utiliza para imprimir los valores de las seis variables seguidas, separados por espacios.
+Prolog Sudoku Solver funciona definiendo y aplicando restricciones para el Sudoku:
 
-- **`resolver/36` Predicado**: El núcleo del algoritmo de resolución de Sudoku. Hace cumplir las reglas del Sudoku asegurándose de que cada fila, columna y subcuadrícula contenga números diferentes. Se necesitan 36 variables que representan los valores en la cuadrícula del Sudoku de 6x6.
+- Define una cuadrícula de Sudoku 4x4 válida con distintas filas, columnas y subcuadrículas (regiones) de 2x2.
+- Utiliza permutación para generar combinaciones de filas válidas.
+- Transpone la cuadrícula para garantizar las restricciones de las columnas.
+- Define regiones y garantiza que contengan valores distintos.
+- Utiliza retroceso y etiquetado para encontrar la solución.
 
-- **`sudoku/36` Predicado**: El punto de entrada para resolver el Sudoku 6x6. Puedes llamar a este predicado con tus valores iniciales y resolverá el rompecabezas.
+## Cómo probarlo
 
-- **`num/1` Facts**: Estos datos definen los números válidos (1 a 6) que se pueden usar en la cuadrícula de Sudoku.
-
-## Cómo utilizar
-
-1. Abra un entorno Prolog como SWI-Prolog.
-
-2. Cree un nuevo archivo Prolog o utilice el editor integrado.
-
-3. Copie y pegue el código proporcionado en su archivo Prolog.
-
-4. Reemplace los guiones bajos en el predicado `sudoku` con los valores iniciales de su Sudoku 6x6. Defina valores conocidos y deje las celdas desconocidas como guiones bajos.
-
-5. Guarde el archivo Prolog con una extensión `.pl`, por ejemplo, `sudoku_solver.pl`.
-
-6. En la terminal Prolog, consulte el archivo usando el predicado `consult/1`:
+1. Carga el programa Prolog en su entorno Prolog usando el predicado `consult`:
 
     ```prolog
-    consult('sudoku_solver.pl').
+    ?- consul('sudoku_solver.pl').
+
+2. Crea un Sudoku definiendo una cuadrícula de 4x4. Utilice números enteros del 1 al 4 para representar valores conocidos y utilice un guión bajo _ para representar celdas vacías.
+
+Puzzle = [
+    [_, _, 2, _],
+    [_, 4, _, _],
+    [1, _, _, _],
+    [_, _, _, 3]
+].
+
+3. Llama al predicado 'sudoku/1' con tu rompecabezas para encontrar la solución:
+
+?- sudoku(Puzzle).
+
+4. El solucionador enviará el Sudoku resuelto a la consola.
+
+## Ejemplo
+
+Supongamos que se tiene el siguiente Sudoku 4x4 incompleto:
+
+Puzzle = [
+    [_, _, 2, _],
+    [_, 4, _, _],
+    [1, _, _, _],
+    [_, _, _, 3]
+].
+
+Se puede solucionar siguiendo los pasos anteriores. El solucionador producirá el siguiente resultado:
+
+[3, 1, 2, 4]
+[2, 4, 3, 1]
+[1, 3, 4, 2]
+[4, 2, 1, 3]
+
+Esto representa el Sudoku resuelto.
+
+## Licencia
+
+Este 'Prolog Sudoku Solver' se proporciona bajo la licencia MIT.
+
+Marta Canino Romero - 2023.
