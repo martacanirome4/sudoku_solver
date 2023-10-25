@@ -1,14 +1,19 @@
+% REGLAS
+
+% Definir una cuadrícula de Sudoku 4x4 válida
 valid_sudoku(Board) :-
     valid_rows(Board),
     transpose(Board, Columns),
     valid_rows(Columns),
     valid_regions(Board).
 
+% Definir filas válidas
 valid_rows([]).
 valid_rows([Row | Rest]) :-
     permutation([1, 2, 3, 4], Row),
     valid_rows(Rest).
 
+% Definir regiones válidas (subcuadrículas 2x2)
 valid_regions(Board) :-
     valid_region(Board, 0, 0),
     valid_region(Board, 0, 2),
@@ -29,10 +34,12 @@ valid_region(Board, RowStart, ColStart) :-
     nth0(Col2, R2, D),
     permutation([1, 2, 3, 4], Region).
 
+% Predicado para resolver el sudoku
 sudoku(Board) :-
     valid_sudoku(Board),
     print_board(Board).
 
+% Imprimir el tablero
 print_board([]).
 print_board([Row | Rest]) :-
     write(Row), nl,
