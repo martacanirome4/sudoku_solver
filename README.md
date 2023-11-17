@@ -25,17 +25,10 @@ Prolog Sudoku Solver funciona definiendo y aplicando restricciones para el Sudok
 
 2. Crea un Sudoku definiendo una cuadrícula de 4x4. Utilice números enteros del 1 al 4 para representar valores conocidos y utilice un guión bajo _ para representar celdas vacías.
 
-Puzzle = [
-    [_, _, 2, _],
-    [_, 4, _, _],
-    [1, _, _, _],
-    [_, _, _, 3]
-].
-
-3. Llama al predicado 'sudoku/1' con tu rompecabezas para encontrar la solución:
-
-   ```prolog
-   ?- sudoku(Puzzle).
+sudoku([ [_, _, 2, _],
+         [_, 4, _, _],
+         [1, _, _, _],
+         [_, _, _, 3] ]).
 
 4. El solucionador enviará el Sudoku resuelto a la consola.
 
@@ -43,12 +36,10 @@ Puzzle = [
 
 Supongamos que se tiene el siguiente Sudoku 4x4 incompleto:
 
-Puzzle = [
-    [_, _, 2, _],
-    [_, 4, _, _],
-    [1, _, _, _],
-    [_, _, _, 3]
-].
+sudoku([ [_, _, 2, _],
+         [_, 4, _, _],
+         [1, _, _, _],
+         [_, _, _, 3] ]).
 
 Se puede solucionar siguiendo los pasos anteriores. El solucionador producirá el siguiente resultado:
 
