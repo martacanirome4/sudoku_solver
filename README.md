@@ -27,15 +27,17 @@ Prolog Sudoku Solver funciona definiendo y aplicando restricciones para el Sudok
     ```bash
     ?- use_module(library(clpfd)).
     
-3. Crea un Sudoku definiendo una cuadrícula de 4x4. Utiliza números enteros del 1 al 4 para representar valores conocidos y utilice un guión bajo _ para representar celdas vacías. Llama al programa dándole por argumento el Sudoku en formato de filas separadas por comas. Ejemplo:
+3. Crea un Sudoku definiendo una cuadrícula de 4x4. Utiliza números enteros del 1 al 4 para representar valores conocidos y utilize un guión bajo _ para representar celdas vacías.
+   
+4. Llama al programa dándole por argumento el Sudoku en formato de filas separadas por comas. Ejemplo:
 
    ```bash
-   sudoku([ [_, _, 2, _],
+   ?- sudoku([ [_, _, 2, _],
          [_, 4, _, _],
          [1, _, _, _],
          [_, _, _, 3] ]).
 
-4. El programa mostrará el Sudoku resuelto a la consola.
+5. El programa mostrará el Sudoku resuelto a la consola.
 
 ## Ejemplo
 
