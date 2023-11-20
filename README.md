@@ -32,10 +32,10 @@ Prolog Sudoku Solver funciona definiendo y aplicando restricciones para el Sudok
 4. Llama al programa dándole por argumento el Sudoku en formato de filas separadas por comas. Ejemplo:
 
    ```bash
-   ?- sudoku([ [_, _, 2, _],
-         [_, 4, _, _],
-         [1, _, _, _],
-         [_, _, _, 3] ]).
+       ?- sudoku([ [_, _, 2, _],
+             [_, 4, _, _],
+             [1, _, _, _],
+             [_, _, _, 3] ]).
 
 5. El programa mostrará el Sudoku resuelto a la consola.
 
